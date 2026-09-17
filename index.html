@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Calon Sponsor Hari Santri Nasional 2026</title>
+  
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #334155;
+      padding-bottom: 60px;
+    }
+    
+    .main-card {
+      background: #ffffff;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      overflow: hidden;
+    }
+
+    .header-box {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      border-bottom: 3px solid #16a34a;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 24px;
+    }
+
+    .kop-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 120px;
+      object-fit: contain;
+    }
+
+    .form-control, .form-select {
+      border-radius: 10px;
+      padding: 12px 16px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: #16a34a;
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15);
+    }
+
+    .btn-submit {
+      background-color: #16a34a;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #15803d;
+      transform: translateY(-1px);
+    }
+
+    .table thead th {
+      background-color: #f1f5f9;
+      color: #475569;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      padding: 14px;
+    }
+
+    .alert-custom {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container my-4" style="max-width: 860px;">
+    
+    <!-- Kop Surat Resmi Header -->
+    <div class="header-box text-center">
+      <img src="https://lh3.googleusercontent.com/d/1W_rDWF1CAjtxV3RGlk_pc6n4HyjFMLOR=s1600" 
+           alt="Kop Resmi HSN 2026" 
+           class="kop-img mb-3">
+      <h3 class="fw-bold text-success m-0">FORMULIR CALON SPONSOR</h3>
+      <p class="text-muted fw-medium m-0 mt-1">HARI SANTRI NASIONAL (HSN) 2026</p>
+    </div>
+
+    <!-- Alert Notifikasi -->
+    <div id="alertBox" class="alert alert-success alert-custom d-none mb-4" role="alert">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-check-circle-fill fs-3 me-3 text-success"></i>
+        <div>
+          <h6 class="fw-bold mb-1">Data Berhasil Disimpan!</h6>
+          <p class="mb-0 small text-secondary">Dokumen proposal sponsor telah diterbitkan secara otomatis.</p>
+          <div id="pdfDownloadLink" class="mt-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Main Card -->
+    <div class="main-card p-4 p-md-5 mb-4">
+      <form id="sponsorForm">
+        
+        <!-- Nama Perusahaan -->
+        <div class="mb-4">
+          <label for="namaPerusahaan" class="form-label fw-semibold">
+            Nama Perusahaan / Instansi <span class="text-danger">*</span>
+          </label>
+          <input type="text" class="form-control form-control-lg" id="namaPerusahaan" required placeholder="Contoh: PT. Sumber Makmur Jaya">
+          <div class="form-text text-warning-emphasis mt-2 small">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Mohon tuliskan nama Perusahaan / Instansi dengan teliti dan benar, karena nama ini akan dicetak langsung pada Dokumen Proposal Sponsor.
+          </div>
+        </div>
+
+        <!-- Sapaan & Nama PIC -->
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="sapaanPic" class="form-label fw-semibold">Sapaan PIC <small class="text-muted fw-normal">(opsional)</small></label>
+            <select class="form-select" id="sapaanPic">
+              <option value="" selected>Pilih Sapaan...</option>
+              <option value="Bapak">Bapak</option>
+              <option value="Ibu">Ibu</option>
+              <option value="Bapak/Ibu">Bapak/Ibu</option>
+              <option value="Ustadz / Kiai">Ustadz / Kiai</option>
+              <option value="Ustazah / Nyai">Ustazah / Nyai</option>
+              <option value="Yang Terhormat">Yang Terhormat</option>
+            </select>
+          </div>
+
+          <div class="col-md-8 mb-3">
+            <label for="namaPic" class="form-label fw-semibold">Nama PIC / Direktur <small class="text-muted fw-normal">(opsional)</small></label>
+            <input type="text" class="form-control" id="namaPic" placeholder="Contoh: Hendra Sukmana">
+          </div>
+        </div>
+
+        <!-- Yang Merekomendasikan -->
+        <div class="mb-3">
+          <label for="rekomendasi" class="form-label fw-semibold">Yang Merekomendasikan <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="rekomendasi" required placeholder="Nama pihak yang merekomendasikan">
+        </div>
+
+        <!-- Catatan -->
+        <div class="mb-4">
+          <label for="catatan" class="form-label fw-semibold">Catatan <small class="text-muted fw-normal">(opsional)</small></label>
+          <textarea class="form-control" id="catatan" rows="3" placeholder="Catatan tambahan jika ada..."></textarea>
+        </div>
+
+        <!-- Tombol Submit -->
+        <button type="submit" id="btnSubmit" class="btn btn-success btn-submit w-100 shadow-sm">
+          <span id="btnText"><i class="bi bi-file-earmark-check-fill me-2"></i>Simpan Data & Buatkan Sponsor PDF</span>
+          <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Tabel Daftar Sponsor Terdaftar -->
+    <div class="main-card p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold m-0 text-slate-700"><i class="bi bi-card-checklist me-2 text-success"></i>Daftar Calon Sponsor Terdaftar</h5>
+        <button class="btn btn-sm btn-light border" onclick="fetchTableData()"><i class="bi bi-arrow-clockwise me-1"></i>Refresh</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th width="5%">#</th>
+              <th width="35%">Perusahaan / Instansi</th>
+              <th width="25%">PIC / Direktur</th>
+              <th width="20%">Rekomendasi</th>
+              <th width="15%" class="text-center">Dokumen PDF</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td colspan="5" class="text-center text-muted py-4">Memuat data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // URL Endpoint API Google Apps Script Anda
+    const API_URL = "https://script.google.com/macros/s/AKfycbyNAUQdaIZ9JSqNxpR7o73OfLmSTGBfuVXvpDKkNEU2r6xY8JHJT_Ml21-jifsE8sJS/exec";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchTableData();
+    });
+
+    // Ambil Data Tabel via API GET
+    async function fetchTableData() {
+      const tbody = document.getElementById("tableBody");
+      try {
+        const response = await fetch(API_URL);
+        const result = await response.json();
+
+        if (result.status === "success") {
+          renderTable(result.data);
+        }
+      } catch (err) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-danger py-3">Gagal memuat data. Silakan refresh halaman.</td></tr>';
+      }
+    }
+
+    function renderTable(dataList) {
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "";
+
+      if (!dataList || dataList.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">Belum ada calon sponsor yang terdaftar.</td></tr>';
+        return;
+      }
+
+      dataList.forEach((item, index) => {
+        const pdfBtn = item.pdfUrl 
+          ? `<a href="${item.pdfUrl}" target="_blank" class="btn btn-sm btn-outline-danger">
+               <i class="bi bi-file-pdf me-1"></i>PDF
+             </a>`
+          : `<span class="badge bg-light text-secondary border">-</span>`;
+
+        const row = `<tr>
+          <td class="fw-medium">${index + 1}</td>
+          <td><strong class="text-dark">${escapeHtml(item.namaPerusahaan)}</strong></td>
+          <td>${escapeHtml(item.namaPic)}</td>
+          <td>${escapeHtml(item.rekomendasi)}</td>
+          <td class="text-center">${pdfBtn}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+      });
+    }
+
+    // Submit Form via API POST (Menggunakan text/plain untuk menghindari batasan CORS)
+    document.getElementById("sponsorForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      setLoading(true);
+
+      const payload = {
+        namaPerusahaan: document.getElementById("namaPerusahaan").value,
+        sapaanPic: document.getElementById("sapaanPic").value,
+        namaPic: document.getElementById("namaPic").value,
+        rekomendasi: document.getElementById("rekomendasi").value,
+        catatan: document.getElementById("catatan").value
+      };
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        setLoading(false);
+
+        if (result.status === "success") {
+          const alertBox = document.getElementById("alertBox");
+          const downloadContainer = document.getElementById("pdfDownloadLink");
+
+          if (result.pdfUrl) {
+            downloadContainer.innerHTML = `<a href="${result.pdfUrl}" target="_blank" class="btn btn-success btn-sm mt-2">
+              <i class="bi bi-download me-1"></i> Unduh Dokumen PDF
+            </a>`;
+          }
+
+          alertBox.classList.remove("d-none");
+          document.getElementById("sponsorForm").reset();
+          fetchTableData();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } catch (err) {
+        setLoading(false);
+        alert("Terjadi kesalahan saat menyimpan data. Silakan coba lagi.");
+      }
+    });
+
+    function setLoading(isLoading) {
+      const btn = document.getElementById("btnSubmit");
+      const btnText = document.getElementById("btnText");
+      const btnSpinner = document.getElementById("btnSpinner");
+
+      if (isLoading) {
+        btn.disabled = true;
+        btnText.innerText = "Memproses & Menerbitkan PDF...";
+        btnSpinner.classList.remove("d-none");
+      } else {
+        btn.disabled = false;
+        btnText.innerHTML = '<i class="bi bi-file-earmark-check-fill me-2"></i>Simpan Data & Buatkan Sponsor PDF';
+        btnSpinner.classList.add("d-none");
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '-';
+      return str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+    }
+  </script>
+</body>
+</html>
